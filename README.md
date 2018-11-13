@@ -1,4 +1,4 @@
-# TouchdDesigner Save External
+# TouchDesigner Save External
 *a simple save external tox and text helper*  
 [matthew ragan](matthewragan.com)
 
@@ -8,3 +8,4 @@ It's also worth remember that no framework will ever be perfect - all of these t
 
 So, what does all this have to do with saving exteral tox files? TOX files are the modules of TouchDesigner - they're component operators that can be saved as indiividual files and dropped into any network. These custom operators are made out of other operators. In 099 they can be set to be private if you have a pro license - keeping prying eyes away from your work (if you're worried about that).
 
+That makes these compoenents excellent canidates for externalization, but it takes a little extra work to keep them saved and sycned. In a perfect world we would use the same saving mechanism that's employed to save our TOE file to also save any external file, or better yet, to ask us if we want to exteranlize a file. That, in fact, is the aim of this TOX. 
