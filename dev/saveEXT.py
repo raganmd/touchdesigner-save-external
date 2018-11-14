@@ -25,11 +25,10 @@ class ExternalFiles:
 		'''
 
 		self.my_op 				= my_op
-		self.Default_ui_color	= ui.colors['worksheet.bg']
 		self.Flash_duration 	= 4
 
 		init_msg 				= "Save init from {}".format(my_op)
-
+		self.Defaultcolor		= parent().pars('Defaultcolor*')
 		self.Op_finder 			= op('opfind1')
 
 		print(init_msg)
@@ -244,12 +243,12 @@ class ExternalFiles:
 		par_color 			= '{}*'.format(parColors)
 		over_ride_color 	= parent().pars(par_color)
 
-		# change background color 
+		# change background color (0.1, 0.105, 0.12)
 		ui.colors['worksheet.bg'] 	= over_ride_color
 		delay_script 				= "ui.colors['worksheet.bg'] = args[0]"
 		
 		# want to change the background color back
-		run(delay_script, self.Default_ui_color, delayFrames = self.Flash_duration)		
+		run(delay_script, self.Defaultcolor, delayFrames = self.Flash_duration)		
 
 		return
 
