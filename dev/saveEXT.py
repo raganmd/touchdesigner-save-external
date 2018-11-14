@@ -30,6 +30,7 @@ class ExternalFiles:
 		init_msg 				= "Save init from {}".format(my_op)
 		self.Defaultcolor		= parent().pars('Defaultcolor*')
 		self.Op_finder 			= op('opfind1')
+		self.Extension_flag 	= parent().par.Extensionflag.val
 
 		print(init_msg)
 
@@ -63,6 +64,8 @@ class ExternalFiles:
 		sav_msg_box_title 		= "Externalize Tox"
 		sav_msg_box_msg 		= "This TOX is not yet externalized\n\nWould you like to externalize this TOX?"
 		sav_msg_box_buttons 	= ["No", "Yes"]
+
+		# check if location is the root of the project 
 
 
 		# check if external
@@ -183,7 +186,7 @@ class ExternalFiles:
 				if external_file.split('.')[1] == "py":
 
 					# check to see if an op is flagged as an extension:
-					if 'EXT' in op(each_op.val).tags:
+					if self.Extension_flag in op(each_op.val).tags:
 
 						# check to see the op's parent has any extensions
 						extension_pars = [ext for ext in op(each_op.val).parent().pars('extension*')]
@@ -213,10 +216,6 @@ class ExternalFiles:
 
 			else:
 				pass
-
-		return
-
-	def Externalize_tox(self, tox):
 
 		return
 
