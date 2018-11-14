@@ -183,28 +183,28 @@ class ExternalFiles:
 				# check to see if the external file is python
 				if external_file.split('.')[1] == "py":
 
-					# check to see the op's parent has any extensions
-					extension_pars = [ext for ext in op(each_op.val).parent().pars('extension*')]
-					if len(extension_pars) > 0:
-						print(op(each_op.val).parent())
+					# check to see if an op is flagged as an extension:
+					if 'EXT' in op(each_op.val).tags:
 
-						# reinit the parent's extensions
-						op(each_op.val).parent().par.reinitextensions.pulse()
+						# check to see the op's parent has any extensions
+						extension_pars = [ext for ext in op(each_op.val).parent().pars('extension*')]
+						if len(extension_pars) > 0:
+							# print(op(each_op.val).parent())
 
-					if op(each_op.val).parent().par.externaltox != '':
-						print("empty")
+							# reinit the parent's extensions
+							op(each_op.val).parent().par.reinitextensions.pulse()
 
-					elif op(each_op.val).parent().isCOMP and op(each_op.val).parent().par.externaltox != '':
-						print("This needs reinit")
+						elif op(each_op.val).parent().isCOMP and op(each_op.val).parent().par.externaltox != '':
+							# print("This needs reinit")
+						
+							# if the DAT has a parent COMP, reinit the extension
+							op(each_op.val).parent().par.reinitextensions.pulse()
 
-						# if the DAT has a parent COMP, reinit the extension
-						op(each_op.val).parent().par.reinitextensions.pulse()
-
-						self.Flash_bg("Savecolor")
-					
-					else:
-						# COMP is the only consideration we care about at the moment
-						pass
+							self.Flash_bg("Savecolor")
+						
+						else:
+							# COMP is the only consideration we care about at the moment
+							pass
 				else:
 					# skip other file types for now
 					pass
