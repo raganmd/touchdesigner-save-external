@@ -25,12 +25,12 @@ class ExternalFiles:
 		'''
 
 		self.my_op 				= my_op
-		self.Default_ui_color	= ui.colors['worksheet.bg']
 		self.Flash_duration 	= 4
 
 		init_msg 				= "Save init from {}".format(my_op)
-
+		self.Defaultcolor		= parent().pars('Defaultcolor*')
 		self.Op_finder 			= op('opfind1')
+		self.Extension_flag 	= parent().par.Extensionflag.val
 
 		print(init_msg)
 
@@ -65,77 +65,84 @@ class ExternalFiles:
 		sav_msg_box_msg 		= "This TOX is not yet externalized\n\nWould you like to externalize this TOX?"
 		sav_msg_box_buttons 	= ["No", "Yes"]
 
+		# check if location is the root of the project 
+		if current_loc == '/':
+			# skip if we're at the root of the project
+			pass
 
-		# check if external
-		if current_loc.par.externaltox != "":
-			
-			confirmation 				=  ui.messageBox(msg_box_title, msg_box_msg, buttons = msg_box_buttons)
-
-			if confirmation:
-
-				# save external file
-				external_path 			= current_loc.par.externaltox
-				current_loc.save(external_path)
-
-				# set color for COMP
-				current_loc.color 		= (ext_color[0], ext_color[1], ext_color[2])
-
-				# flash color
-				self.Flash_bg("Bgcolor")
-
-				# create and print log message
-				log_msg 		= "{} saved to {}/{}".format(current_loc, 
-															project.folder, 
-															external_path)
-				
-				self.Logtotextport(log_msg)
-
-			
-			else:
-				# if the user presses "cancel" we pass
-				pass
-		
-		# ask if we want to externalize the file
 		else:
-			save_ext 			= ui.messageBox(sav_msg_box_title, sav_msg_box_msg, buttons = sav_msg_box_buttons)
+			# if we're not at the root of the project 
 			
-			if save_ext:
-				# ask user for a save location
-				save_loc 		= ui.chooseFolder(title="TOX Location")
+			# check if external
+			if current_loc.par.externaltox != "":
 				
-				# construct a relative path and relative loaction for our elements
-				rel_path 		= tdu.collapsePath(save_loc)
-				rel_loc 		= '{new_module}/{new_tox}/{new_tox}.tox'.format(new_module = rel_path, new_tox = current_loc.name)
+				confirmation 				=  ui.messageBox(msg_box_title, msg_box_msg, buttons = msg_box_buttons)
+
+				if confirmation:
+
+					# save external file
+					external_path 			= current_loc.par.externaltox
+					current_loc.save(external_path)
+
+					# set color for COMP
+					current_loc.color 		= (ext_color[0], ext_color[1], ext_color[2])
+
+					# flash color
+					self.Flash_bg("Bgcolor")
+
+					# create and print log message
+					log_msg 		= "{} saved to {}/{}".format(current_loc, 
+																project.folder, 
+																external_path)
+					
+					self.Logtotextport(log_msg)
+
 				
-				# create path and directory in the OS
-				new_path 		= '{selected_path}/{new_module}'.format(selected_path = save_loc, new_module = current_loc.name)
-				os.mkdir(new_path)
-
-				# format our tox path
-				tox_path 		= '{dir_path}/{tox}.tox'.format(dir_path = new_path, tox = current_loc.name)
-
-				# setup our module correctly
-				current_loc.par.externaltox 		= rel_loc
-				current_loc.par.savebackup 			= False
-
-				# set color for COMP
-				current_loc.color 		= (ext_color[0], ext_color[1], ext_color[2])
-
-				# save our tox
-				current_loc.save(tox_path)
-
-				# flash color
-				self.Flash_bg("Bgcolor")
-
-				# create and print log message
-				log_msg 		= "{} saved to {}/{}".format(current_loc, 
-															project.folder, 
-															tox_path)
-				self.Logtotextport(log_msg)
-
+				else:
+					# if the user presses "cancel" we pass
+					pass
+			
+			# ask if we want to externalize the file
 			else:
-				# the user selected "No"
-				pass
+				save_ext 			= ui.messageBox(sav_msg_box_title, sav_msg_box_msg, buttons = sav_msg_box_buttons)
+				
+				if save_ext:
+					# ask user for a save location
+					save_loc 		= ui.chooseFolder(title="TOX Location")
+					
+					# construct a relative path and relative loaction for our elements
+					rel_path 		= tdu.collapsePath(save_loc)
+					rel_loc 		= '{new_module}/{new_tox}/{new_tox}.tox'.format(new_module = rel_path, new_tox = current_loc.name)
+					
+					# create path and directory in the OS
+					new_path 		= '{selected_path}/{new_module}'.format(selected_path = save_loc, new_module = current_loc.name)
+					os.mkdir(new_path)
+
+					# format our tox path
+					tox_path 		= '{dir_path}/{tox}.tox'.format(dir_path = new_path, tox = current_loc.name)
+
+					# setup our module correctly
+					current_loc.par.externaltox 		= rel_loc
+					current_loc.par.savebackup 			= False
+
+					# set color for COMP
+					current_loc.color 		= (ext_color[0], ext_color[1], ext_color[2])
+
+					# save our tox
+					current_loc.save(tox_path)
+
+					# flash color
+					self.Flash_bg("Bgcolor")
+
+					# create and print log message
+					log_msg 		= "{} saved to {}/{}".format(current_loc, 
+																project.folder, 
+																tox_path)
+					self.Logtotextport(log_msg)
+
+				else:
+					# the user selected "No"
+					pass
 
 		
 		return
@@ -183,28 +190,28 @@ class ExternalFiles:
 				# check to see if the external file is python
 				if external_file.split('.')[1] == "py":
 
-					# check to see the op's parent has any extensions
-					extension_pars = [ext for ext in op(each_op.val).parent().pars('extension*')]
-					if len(extension_pars) > 0:
-						print(op(each_op.val).parent())
+					# check to see if an op is flagged as an extension:
+					if self.Extension_flag in op(each_op.val).tags:
 
-						# reinit the parent's extensions
-						op(each_op.val).parent().par.reinitextensions.pulse()
+						# check to see the op's parent has any extensions
+						extension_pars = [ext for ext in op(each_op.val).parent().pars('extension*')]
+						if len(extension_pars) > 0:
+							# print(op(each_op.val).parent())
 
-					if op(each_op.val).parent().par.externaltox != '':
-						print("empty")
+							# reinit the parent's extensions
+							op(each_op.val).parent().par.reinitextensions.pulse()
 
-					elif op(each_op.val).parent().isCOMP and op(each_op.val).parent().par.externaltox != '':
-						print("This needs reinit")
+						elif op(each_op.val).parent().isCOMP and op(each_op.val).parent().par.externaltox != '':
+							# print("This needs reinit")
+						
+							# if the DAT has a parent COMP, reinit the extension
+							op(each_op.val).parent().par.reinitextensions.pulse()
 
-						# if the DAT has a parent COMP, reinit the extension
-						op(each_op.val).parent().par.reinitextensions.pulse()
-
-						self.Flash_bg("Savecolor")
-					
-					else:
-						# COMP is the only consideration we care about at the moment
-						pass
+							self.Flash_bg("Savecolor")
+						
+						else:
+							# COMP is the only consideration we care about at the moment
+							pass
 				else:
 					# skip other file types for now
 					pass
@@ -214,10 +221,6 @@ class ExternalFiles:
 
 			else:
 				pass
-
-		return
-
-	def Externalize_tox(self, tox):
 
 		return
 
@@ -244,12 +247,12 @@ class ExternalFiles:
 		par_color 			= '{}*'.format(parColors)
 		over_ride_color 	= parent().pars(par_color)
 
-		# change background color 
+		# change background color (0.1, 0.105, 0.12)
 		ui.colors['worksheet.bg'] 	= over_ride_color
 		delay_script 				= "ui.colors['worksheet.bg'] = args[0]"
 		
 		# want to change the background color back
-		run(delay_script, self.Default_ui_color, delayFrames = self.Flash_duration)		
+		run(delay_script, self.Defaultcolor, delayFrames = self.Flash_duration)		
 
 		return
 
