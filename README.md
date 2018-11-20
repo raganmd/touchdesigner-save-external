@@ -23,7 +23,7 @@ In addition to externalizing tox files, it's often helpful to also externalize a
 "What's further mean?" You ask - and I'm so glad you did. Furhter means that if you change this file outside of touch - say in a text editor like Sublime or Visual Studio Code, this TOX module will watch to see if that file has changed, and if it has pulse reload the operator that's referencing that file. Better still, if it's an extension, the `parent()` operator will have its extensions reinitialized. There's a little set-up and convention required there, but well worth it if you happen to use extension on a regular basis. 
 
 # Parameters
-![base save and pars](assets\base_save_and_pars.png)  
+![base save and pars](touchdesigner-save-external/assets/base_save_and_pars.PNG)  
 
 ### Extension Flag
 The Extension Flag is the tag you will add to any text DAT that you're using as an extension. This ensures that we can easily identify which text DATs are being used as externally edited extensions, and reload both the contents of the DAT, as well reinitialize the extensions for the `parent()` operator. You can use any descriptor here that you like - I happen to think that something like `EXT` works well.
