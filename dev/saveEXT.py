@@ -221,7 +221,7 @@ class ExternalFiles:
 				op(each_op.val).par.loadonstartpulse.pulse()
 				
 				# flash the background so we know a file has been loaded
-				self.Flash_bg("Bgcolor")
+				self.Flash_bg("Savecolor")
 
 				# check to see if the external file is python
 				if external_file.split('.')[1] == "py":
