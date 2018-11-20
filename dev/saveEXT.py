@@ -150,12 +150,20 @@ class ExternalFiles:
 		ext_color 				= parent().pars("Extcolor*")
 
 		# ask user for a save location
-		save_loc 		= ui.chooseFolder(title="TOX Location")
+		save_loc 		= ui.chooseFolder(title="TOX Location", start=project.folder)
 		
 		# construct a relative path and relative loaction for our elements
+		print(save_loc)
 		rel_path 		= tdu.collapsePath(save_loc)
-		rel_loc 		= '{new_module}/{new_tox}/{new_tox}.tox'.format(new_module = rel_path, new_tox = current_loc.name)
 		
+		# check to see if the location is at the root of the project folder structure
+		if rel_path == "$TOUCH":
+			rel_loc 	= '{new_tox}/{new_tox}.tox'.format(new_tox = current_loc.name)
+		
+		# save path is not in the root of the project
+		else:
+			rel_loc 	= '{new_module}/{new_tox}/{new_tox}.tox'.format(new_module = rel_path, new_tox = current_loc.name)
+
 		# create path and directory in the OS
 		new_path 		= '{selected_path}/{new_module}'.format(selected_path = save_loc, new_module = current_loc.name)
 		os.mkdir(new_path)
