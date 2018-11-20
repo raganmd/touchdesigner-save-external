@@ -63,11 +63,11 @@ If you're using a text editor for supported externalized files, than work as you
 # Suggested Workflow
 ## Externalization Only
 1. Create a directory for your project  
-![create-a-dir](/assets/create-project-dir.png)
+![create-a-dir](assets\create-project-dir.png)
 
 
 2. Open TouchDesigner and save your `.TOE` file in your new directory **this is an important step** - saving your project makes sure that the member `project.folder` correct points to your `.TOE` file.  
-![create-a-project](/assets/create-project-toe.png)
+![create-a-project](assets\create-project-toe.png)
 
 3. Drop the `base_save.tox` from `touchdesigner-save-external\release` into your network - I'd recommend doing this at the root of your project, or in a place in your project specifically designed to hold other tools. I like to create a base called tools where I keep all the things that I use for development, or that any machine might need (meaning when you're thinking on a single `.TOE` file that's configured based on a machine's role)  
 ![drag-into-network](assets/drag-into-network.gif)
