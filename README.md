@@ -22,11 +22,31 @@ In addition to externalizing tox files, it's often helpful to also externalize a
 
 "What's further mean?" You ask - and I'm so glad you did. Furhter means that if you change this file outside of touch - say in a text editor like Sublime or Visual Studio Code, this TOX module will watch to see if that file has changed, and if it has pulse reload the operator that's referencing that file. Better still, if it's an extension, the `parent()` operator will have its extensions reinitialized. There's a little set-up and convention required there, but well worth it if you happen to use extension on a regular basis. 
 
-- - - 
-## Parameters
+# Parameters
+![base save and pars](assets\base_save_and_pars.png)  
 
+### Extension Flag
+The Extension Flag is the tag you will add to any text DAT that you're using as an extension. This ensures that we can easily identify which text DATs are being used as externally edited extensions, and reload both the contents of the DAT, as well reinitialize the extensions for the `parent()` operator. You can use any descriptor here that you like - I happen to think that something like `EXT` works well.
 
-## Operation
+### Log to Texport
+If you want to track when and where your external files are being saved, or if you're worried that something might be going wrong, you can turn on the `Logtotextport` parmeter to see the results of each save operation logged for easy view and tracking.
+
+### Default Color
+The default color is set as a read-only parameter used to reset the network worksheet background color. This is used in conjunction with the following two parameters to provide visual indicators for when a save or load operation has happened.
+
+### BG Color
+This is the color that the network background will flash when you externalize a TOX - it's the visual indicator that your tox has been sucessfully saved.
+
+### Save Color
+This is the color that the network background will flash save a text based file in an external editor - it's the visual indicator that your file has been reloaded.
+
+### EXT Color
+This is the color used to set the node color of your newly externalized tox - this can help ensure that at a glance you can tell which operators have been externalized.
+
+### Version
+The version number for this tool.
+
+# Operation
 
 ### `reinitextensions.pulse()`
 If you want to use this in conjunction with extensions, you'll need to follow a few conventions: 
@@ -50,3 +70,8 @@ At this point, you might have guess that this kind of approach works best in wel
 - - -
 ## An Example Project
 In the folder called `sample_project` open the `Sample_project.toe` to see how this might work. 
+
+- - -
+# Credits
+
+[Material Design Icons by Google](https://material.io/tools/icons/?icon=save_alt&style=baseline)
