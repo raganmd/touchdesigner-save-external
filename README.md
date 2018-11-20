@@ -73,5 +73,10 @@ In the folder called `sample_project` open the `Sample_project.toe` to see how t
 
 - - -
 # Credits
+### Inspired by the work of:  
+[Anton Heestand](http://hexagons.se/)  
+[Willy Nolan](https://github.com/computersarecool)  
+I've had the great fortune of working with both of these find developers. I regularly use an externalization tool authored by these two developers, and this TOX is partially inspired by their work. Many thanks for a tool that keeps on working and makes using GIT with TouchDesigner something that's reasonable.
 
+### Icons
 [Material Design Icons by Google](https://material.io/tools/icons/?icon=save_alt&style=baseline)
