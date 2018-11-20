@@ -66,7 +66,7 @@ If you're using a text editor for supported externalized files, than work as you
 ![create-a-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-project-dir.PNG?raw=true)
 
 2. Open TouchDesigner and save your `.TOE` file in your new directory **this is an important step** - saving your project makes sure that the member `project.folder` correct points to your `.TOE` file.  
-![create-a-project](master/assets/create-project-toe.png)
+![create-a-project](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-project-toe.PNG?raw=true)
 
 3. Drop the `base_save.tox` from `touchdesigner-save-external\release` into your network - I'd recommend doing this at the root of your project, or in a place in your project specifically designed to hold other tools. I like to create a base called tools where I keep all the things that I use for development, or that any machine might need (meaning when you're thinking on a single `.TOE` file that's configured based on a machine's role)  
 ![drag-into-network](assets/drag-into-network.gif)
@@ -76,17 +76,17 @@ If you're using a text editor for supported externalized files, than work as you
 
 5. Use `ctrl + s` to save your project as you might usually.
 6. Notice that you're now prompted to save your COMP externally - select `Yes`  
-![ctrl-s](assets/prompt-to-externalize.png)
+![ctrl-s](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/prompt-to-externalize.PNG?raw=true)
 
 7. Create a new folder in your project folder called `td-modules` (this is my suggestion, though you can use any name you like). Navigate into this folder and compete the save process.  
-![create-a-modules-dir](assets/create-td-modules-dir.png)
+![create-a-modules-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-td-modules-dir.PNG?raw=true)
 
 8. Check finder (macOS) or explorer (windows) to see that in `td-moduels` you now have a new directory for your tox, and inside of that directory is your saved tox file.  
-![newly-made-dir](assets/new-save-dir.png)  
-![newly-saved-tox](assets/new-save-tox.png) 
+![newly-made-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/new-save-dir.PNG?raw=true)  
+![newly-saved-tox](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/new-save-tox.PNG?raw=true) 
 
 9. Notice that the color of your tox has changed so you know that it's externalized.  
-![external-tox-color](assets/external-tox-color.png)
+![external-tox-color](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/external-tox-color.PNG?raw=true)
 
 10. Continue to work and save. Note that when you use `ctrl+s` both your project and your tox are saved. If you happen to create an external `.TOX` inside of a tox that's already externalized, you'll be prompted to save both the `parent()` and the current COMP or just the current COMP.
 
@@ -94,7 +94,7 @@ If you're using a text editor for supported externalized files, than work as you
 1. Create a new repo
 2. Clone / Initialize your repo locally
 3. Open TouchDesigner and save your `.TOE` file in your repo  
-![create-a-project](assets/create-project-toe.png)
+![create-a-project](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-project-toe.PNG?raw=true)
 
 4. Drop the `base_save.tox` from `touchdesigner-save-external\release` into your network - I'd recommend doing this at the root of your project, or in a place in your project specifically designed to hold other tools. I like to create a base called tools where I keep all the things that I use for development, or that any machine might need (meaning when you're thinking on a single `.TOE` file that's configured based on a machine's role)  
 ![drag-into-network](assets/drag-into-network.gif)
@@ -104,17 +104,17 @@ If you're using a text editor for supported externalized files, than work as you
 
 6. Use `ctrl + s` to save your project as you might usually.
 7. Notice that you're now prompted to save your COMP externally - select `Yes`  
-![ctrl-s]assets/prompt-to-externalize.png)
+![ctrl-s](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/prompt-to-externalize.PNG?raw=true)
 
 8. Create a new folder in your project folder called `td-modules` (this is my suggestion, though you can use any name you like). Navigate into this folder and compete the save process.  
-![create-a-modules-dir](assets/create-td-modules-dir.png)
+![create-a-modules-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-td-modules-dir.PNG?raw=true)
 
 9. Check finder (macOS) or explorer (windows) to see that in `td-moduels` you now have a new directory for your tox, and inside of that directory is your saved tox file.  
-![newly-made-dir](assets/new-save-dir.png)  
-![newly-saved-tox](assets/new-save-tox.png) 
+![newly-made-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/new-save-dir.PNG?raw=true)  
+![newly-saved-tox](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/new-save-tox.PNG?raw=true)  
 
 10. Notice that the color of your tox has changed so you know that it's externalized.  
-![external-tox-color](assets/external-tox-color.png)
+![external-tox-color](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/external-tox-color.PNG?raw=true)
 
 11. Continue to work and save. Note that when you use `ctrl+s` both your project and your tox are saved. If you happen to create an external `.TOX` inside of a tox that's already externalized, you'll be prompted to save both the `parent()` and the current COMP or just the current COMP.
 12. Commit and push your work.
