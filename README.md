@@ -63,17 +63,17 @@ If you're using a text editor for supported externalized files, than work as you
 # Suggested Workflow
 ## Externalization Only
 1. Create a directory for your project  
-![create-a-dir](assets\create-project-dir.png)
+![create-a-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-project-dir.PNG?raw=true)
 
 
 2. Open TouchDesigner and save your `.TOE` file in your new directory **this is an important step** - saving your project makes sure that the member `project.folder` correct points to your `.TOE` file.  
-![create-a-project](assets\create-project-toe.png)
+![create-a-project](assets/create-project-toe.png)
 
 3. Drop the `base_save.tox` from `touchdesigner-save-external\release` into your network - I'd recommend doing this at the root of your project, or in a place in your project specifically designed to hold other tools. I like to create a base called tools where I keep all the things that I use for development, or that any machine might need (meaning when you're thinking on a single `.TOE` file that's configured based on a machine's role)  
 ![drag-into-network](assets/drag-into-network.gif)
 
 4. Create a new component, and navigate inside of this new COMP.  
-![create-a-new-comp](assets/create-new-comp.png)
+![create-a-new-comp](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-new-comp.PNG?raw=true)
 
 5. Use `ctrl + s` to save your project as you might usually.
 6. Notice that you're now prompted to save your COMP externally - select `Yes`  
@@ -101,7 +101,7 @@ If you're using a text editor for supported externalized files, than work as you
 ![drag-into-network](assets/drag-into-network.gif)
 
 5. Create a new component, and navigate inside of this COMP.  
-![create-a-new-comp](assets/create-new-comp.png)
+![create-a-new-comp](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-new-comp.PNG?raw=true)
 
 6. Use `ctrl + s` to save your project as you might usually.
 7. Notice that you're now prompted to save your COMP externally - select `Yes`  
@@ -140,7 +140,7 @@ If you're using a text editor for supported externalized files, than work as you
 ![external-tox-color](assets/py-file-with-comp.png)
 
 3. Tag your text DAT with `EXT` or whatever extension flag you've chosen.  
-![external-tox-color](assets/add-tag.png)
+![external-tox-color](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/add-tag.PNG?raw=true)
 
 4. Set up a simple extension.  
 ![external-tox-color](assets/ext-set-up.png)
