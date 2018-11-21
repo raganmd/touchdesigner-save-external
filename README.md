@@ -2,6 +2,13 @@
 *a simple save external tox and text helper*  
 [matthew ragan](matthewragan.com)
 
+## TouchDesigner Version
+* 099 2018.26750
+
+## OS Support
+* Windows 10
+* macOS
+
 ## Summary
 Working with git and TouchDesigner isn't always an easy process, but it's often an essential part of the process of tracking your work and collaborating with others. It also encourages you to begin thinking about how to make your projects and components more modular, portable, and reuseable. Those aren't always easy practices to embrace, but they make a big difference in the amount of time you invest in future projects. It's often hard to plan for the gig in six months when you're worried about the gig on Friday - and we all have those sprints or last minute changes. 
 
@@ -11,7 +18,6 @@ So, what does all this have to do with saving external tox files? TOX files are 
 
 That makes these components excellent candidates for externalization, but it takes a little extra work to keep them saved and sycned. In a perfect world we would use the same saving mechanism that's employed to save our TOE file to also save any external file, or better yet, to ask us if we want to externalize a file. That, in fact, is the aim of this TOX.
 
-- - -
 ## Supported File Types
 * `.tox`
 * `.py`
@@ -21,6 +27,7 @@ That makes these components excellent candidates for externalization, but it tak
 In addition to externalizing tox files, it's often helpful to also externalize any files that can be dffed in git - that is any files you can compare meaningfully. When it comes to your version control tool, this means that you can track the changes you or a team member have made from one commit to another. Being able to see what changed over time can help you determine why one version works and another does not. Practically speaking, this usually comes in the form of python files, glsl, or json files. This little tool supports the above file types, and goes a little further. 
 
 "What's further mean?" You ask - and I'm so glad you did. Furhter means that if you change this file outside of touch - say in a text editor like Sublime or Visual Studio Code, this TOX module will watch to see if that file has changed, and if it has pulse reload the operator that's referencing that file. Better still, if it's an extension, the `parent()` operator will have its extensions reinitialized. There's a little set-up and convention required there, but well worth it if you happen to use extension on a regular basis. 
+
 
 # Parameters
 ![base save and pars](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/base_save_and_pars.PNG?raw=true)  
@@ -153,11 +160,9 @@ At this point, you might have guess that this kind of approach works best in wel
 * Make Small Simple Tools - to the best of your ability, try to make sure your modules are independent islands. That's not always possible, but if you can think carefully about creating dependencies, you'll be happier for it. Use custom parameters on your components to keep modules independent from one another. Use select operators, or In's and Out's to build connenctions. 
 * Reuse that TOX - while this approach is fancy and fun, especially when working with git, it's also about making your future self happier. Thank carefully about how you might make something re-usable and portable to another project. THe more you can think through how to make pieces that can easily move from project to project the more time you can spend on the fun stuff... not on the pieces that are fussy and take lots of time.
 
-- - -
-## An Example Project
+# An Example Project
 In the folder called `sample_project` open the `Sample_project.toe` to see how this might work. 
 
-- - -
 # Credits
 ### Inspired by the work of:  
 [Anton Heestand](http://hexagons.se/)  
