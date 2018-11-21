@@ -122,30 +122,30 @@ If you're using a text editor for supported externalized files, than work as you
 ## External Text based files
 1. Start by following the instructions above to set up your project with the `base_save.tox`
 2. Create a folder in your project for scripts or modules.  
-![external-tox-color](assets/scripts.png)
+![scripts](assets/scripts.png)
 
 3. Add a new text DAT to your network, right click and save externally.  
-![external-tox-color](assets/external-script.gif)
+![external-script](assets/external-script.gif)
 
 4. Set path to your external file in your text DAT and turn on the load on start parameter.  
-![external-tox-color](assets/set-path.png)
+![set-path](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/set-path.PNG?raw=true)
 
 5. Now open your text file in your external editor and work directly with your text file. When you save your file you should see the background of TouchDesigner flash, and the contents of your text DAT reload.  
-![external-tox-color](assets/work-in-external-editor.gif)
+![external-editor](assets/work-in-external-editor.gif)
 
 ## External Extensions
 1. Start by following the instructions above to set up your project with the `base_save.tox`
 2. Follow the instructions above for externalizing a python file - this time, make sure you save your `.py` file inside of your tox's folder, and make sure that the text DAT is inside of the component that will use the extensions.  
-![external-tox-color](assets/py-file-with-comp.png)
+![py-file-with-comp](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/py-file-with-comp.PNG?raw=true)
 
 3. Tag your text DAT with `EXT` or whatever extension flag you've chosen.  
-![external-tox-color](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/add-tag.PNG?raw=true)
+![add-tag](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/add-tag.PNG?raw=true)
 
 4. Set up a simple extension.  
-![external-tox-color](assets/ext-set-up.png)
+![ext-set-up](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/ext-set-up.PNG?raw=true)
 
 5. Now open your extension in your external editor and work directly with your `.py` file. When you save your file you should see the background of TouchDesigner flash, the contents of your text DAT reload, and your extension will be reinitialized.  
-![external-tox-color](assets/updating-ext.gif)
+![updating-ext](assets/updating-ext.gif)
 
 # Additional Considerations and Suggestions
 At this point, you might have guess that this kind of approach works best in well structured projects. Some suggestions for organization and approach:
