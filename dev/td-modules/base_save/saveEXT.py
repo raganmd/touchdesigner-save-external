@@ -97,7 +97,7 @@ class ExternalFiles:
 
 					# save this comp only
 					if save_ext == 1:
-						self.Save_tox()
+						self.Save_tox(current_loc)
 
 					# save this comp and the parent
 					elif save_ext == 2:
