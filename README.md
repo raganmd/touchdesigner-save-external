@@ -116,7 +116,7 @@ If you're using a text editor for supported externalized files, than work as you
 8. Create a new folder in your project folder called `td-modules` (this is my suggestion, though you can use any name you like). Navigate into this folder and compete the save process.  
 ![create-a-modules-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/create-td-modules-dir.PNG?raw=true)
 
-9. Check finder (macOS) or explorer (windows) to see that in `td-moduels` you now have a new directory for your tox, and inside of that directory is your saved tox file.  
+9. Check finder (macOS) or explorer (windows) to see that in `td-modules` you now have a new directory for your tox, and inside of that directory is your saved tox file.  
 ![newly-made-dir](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/new-save-dir.PNG?raw=true)  
 ![newly-saved-tox](https://github.com/raganmd/touchdesigner-save-external/blob/master/assets/new-save-tox.PNG?raw=true)  
 
