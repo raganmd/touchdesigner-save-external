@@ -30,7 +30,6 @@ class ExternalFiles:
 		init_msg 				= "Save init from {}".format(my_op)
 		self.Defaultcolor		= parent().pars('Defaultcolor*')
 		self.Op_finder 			= op('opfind1')
-		self.Extension_flag 	= parent().par.Extensionflag.val
 
 		print(init_msg)
 
@@ -98,7 +97,8 @@ class ExternalFiles:
 
 				# check if the parent is externalized
 				if current_loc.parent().par.externaltox != '':
-					save_ext 			= ui.messageBox(sav_msg_box_title, sav_msg_box_msg, buttons = save_msg_buttons_parent_too)
+					save_ext = ui.messageBox(sav_msg_box_title, sav_msg_box_msg, 
+					buttons = save_msg_buttons_parent_too)
 
 					# save this comp only
 					if save_ext == 1:
@@ -134,6 +134,11 @@ class ExternalFiles:
 	def Save_over_tox(self, current_loc):
 		ext_color 				= parent().pars("Extcolor*")
 		external_path 			= current_loc.par.externaltox
+
+		# update custom pars
+		self.update_version_pars(current_loc)
+
+		#save tox
 		current_loc.save(external_path)
 
 		# set color for COMP
@@ -155,7 +160,7 @@ class ExternalFiles:
 		return
 
 	def Save_tox(self, current_loc):
-		ext_color 				= parent().pars("Extcolor*")
+		ext_color 		= parent().pars("Extcolor*")
 
 		# ask user for a save location
 		save_loc 		= ui.chooseFolder(title="TOX Location", start=project.folder)
@@ -174,33 +179,84 @@ class ExternalFiles:
 
 		# create path and directory in the OS
 		new_path 		= '{selected_path}/{new_module}'.format(selected_path = save_loc, new_module = current_loc.name)
-		os.mkdir(new_path)
+		try:
+			os.mkdir(new_path)
+			valid_external_path = True
+		except:
+			self.alert_failed_dir_creation()
+			valid_external_path = False
 
-		# format our tox path
-		tox_path 		= '{dir_path}/{tox}.tox'.format(dir_path = new_path, tox = current_loc.name)
+		if valid_external_path:
+			# format our tox path
+			tox_path 		= '{dir_path}/{tox}.tox'.format(dir_path = new_path, tox = current_loc.name)
 
-		# setup our module correctly
-		current_loc.par.externaltox 		= rel_loc
-		current_loc.par.savebackup 			= False
+			# setup our module correctly
+			current_loc.par.externaltox 		= rel_loc
+			current_loc.par.savebackup 			= False
 
-		# set color for COMP
-		current_loc.color 		= (ext_color[0], ext_color[1], ext_color[2])
+			# set color for COMP
+			current_loc.color 		= (ext_color[0], ext_color[1], ext_color[2])
 
-		# save our tox
-		current_loc.save(tox_path)
+			# setup about page
+			self.custom_page_setup(current_loc)
 
-		# flash color
-		self.Flash_bg("Bgcolor")
+			# save our tox
+			current_loc.save(tox_path)
 
-		# set external file colors
-		self.Set_external_file_colors()
+			# flash color
+			self.Flash_bg("Bgcolor")
 
-		# create and print log message
-		log_msg 		= "{} saved to {}/{}".format(current_loc, 
-													project.folder, 
-													tox_path)
-		self.Logtotextport(log_msg)
+			# set external file colors
+			self.Set_external_file_colors()
+
+			# create and print log message
+			log_msg 		= "{} saved to {}/{}".format(current_loc, 
+														project.folder, 
+														tox_path)
+			self.Logtotextport(log_msg)
+		else:
+			pass
+
 		return
+
+	def alert_failed_dir_creation(self):
+		op.TDResources.op('popDialog').Open(
+			title="Failed to Save TOX",
+			text='''It looks like there is an existing
+TOX in this directory. 
+
+Please check your to make sure
+this TOX does not already exist.
+''',
+			buttons=["Okay"]
+		)
+
+	def update_custom_str_par(self, targetOp, par, value, par_label="Temp"):
+		if targetOp.par[par] != None:
+			targetOp.par[par] = value
+		else:
+			about_page = targetOp.appendCustomPage("About")
+			about_page.appendStr(par, label=par_label)
+			targetOp.par[par] = value
+			targetOp.par[par].readOnly = True
+
+	def update_version_pars(self, target_op):
+		if target_op.par['Toxversion'] == None:
+			self.update_custom_str_par(target_op, "Toxversion", "0.0.0", "Tox Version")
+		else:
+			version = target_op.par['Toxversion'].eval()
+			digits = version.split('.')
+			update_val = int(digits[2]) + 1
+			digits[2] = str(update_val)
+			new_version = ".".join(digits)
+			self.update_custom_str_par(target_op, "Toxversion", new_version, "Tox Version")
+		self.update_custom_str_par(target_op, "Tdversion", app.version, "TD Version")
+		self.update_custom_str_par(target_op, "Tdbuild", app.build, "TD Build")		
+
+	def custom_page_setup(self, target_op):
+		self.update_custom_str_par(target_op, "Toxversion", "0.0.0", "Tox Version")
+		self.update_custom_str_par(target_op, "Tdversion", app.version, "TD Version")
+		self.update_custom_str_par(target_op, "Tdbuild", app.build, "TD Build")
 
 	def Flash_bg(self, parColors):
 		'''
@@ -235,13 +291,10 @@ class ExternalFiles:
 		return
 
 	def Logtotextport(self, logMsg):
-
 		if parent().par.Logtotextport:
 			print(logMsg)
-
 		else:
 			pass
-
 		return
 
 	def find_all_dats(self):
@@ -269,26 +322,43 @@ class ExternalFiles:
 					pass
 		return external_dats
 
+	def Set_ext_tox_colors(self):
+		externalChildren = self.find_external_ops()
+		colors = [par.eval() for par in parent().pars('Extcolor*')]
+		for eachOp in externalChildren:
+			eachOp.color = (colors[0], colors[1], colors[2])
+		pass
+
 	def Set_external_file_colors(self):
+		'''Sets colors for external files
+		'''
 		colors = [par.eval() for par in parent().pars('Filecolor*')]
 
 		external_dats = self.find_all_dats()
 		for eachDat in external_dats:
 			eachDat.color = (colors[0], colors[1], colors[2])
-
 		pass
 
-	## Additions
+	def find_external_ops(self):
+		'''Returns a list of all external comps
+		'''
+		children = root.findChildren(type=COMP)
+		external_ops = [eachChild for eachChild in children if eachChild.par.externaltox != '']
+		return external_ops
+
 	def Update_dirty_table(self):
+		'''Updates table of dirty tox files
+		'''
 		op('table_dirty_ops').clear(keepFirstRow=True)
 		children = root.findChildren(type=COMP)
 		for each in children:
 			if each.dirty:
 				op('table_dirty_ops').appendRow([each.name, each.path])
-
 		return children
 
 	def Find_dirty_tox(self):
+		'''Finds all dirty comps
+		'''
 		op('table_dirty_ops').clear(keepFirstRow=True)
 		children = self.Update_dirty_table()
 
@@ -299,12 +369,15 @@ class ExternalFiles:
 			return None
 
 	def Open_network_location(self, network_location):
+		''' Moves network to save location
+		'''
 		ui.panes.current.owner = network_location
 		ui.panes.current.home()
 		print(type(ui.panes.current))
 
 	def Keyboard_input(self, shortcut):
-
+		'''Keyboard input handler
+		'''
 		shortcut_lookup = {
 			'ctrl.w' : self.Prompt_to_save,
 			'ctrl.shift.w' : self.Find_dirty_tox
