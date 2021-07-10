@@ -112,7 +112,6 @@ In addition to saving a single file, you can also see all the components that yo
 11. Continue to work and save. Note that when you use `ctrl+w` both your project and your tox are saved. If you happen to create an external `.TOX` inside of a tox that's already externalized, you'll be prompted to save both the `parent()` and the current COMP or just the current COMP.
 12. Commit and push your work.
 
-
 # Additional Considerations and Suggestions
 At this point, you might have guess that this kind of approach works best in well structured projects. Some suggestions for organization and approach:
 * Think about Order and Structure - while I've structured projects lots of different ways, it's worth finding a file structure that you like and sticking with it. That might be a deeply nested structure (watch out that'll bite you if you get too deep - at least on windows), or it might be something more flat. Regardless, think about a structure and stay with it.
