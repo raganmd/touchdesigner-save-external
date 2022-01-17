@@ -316,7 +316,8 @@ this TOX does not already exist.
 				pass
 			
 			else:
-				if eachOp.par['file'] != '':
+				# changed to check if parameter 'file' exists as well
+				if (eachOp.par['file'] != '') and (eachOp.par['file']):
 					external_dats.append(eachOp)
 				else:
 					pass
