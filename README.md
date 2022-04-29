@@ -47,7 +47,7 @@ This is the color used to set the node color of your newly externalized tox - th
 The version number for this tool.
 
 ### `ctrl+w`
-The way you'll use this tox is just as if you were working as you might normally. Only, when you hit `ctrl + s`, if you're inside of a COMP that hasn't been saved externally, you'll be asked if you want to externalize that module. If you select `yes` you'll next be asked where you want to save that module. This module will then create a folder that has the same name as your component, and save the tox inside of that folder (the tox will also have the same name as the component). Better yet, this module will auto-populate the path to the external tox with the location you've selected. When you press `ctrl + s` again it will warn you that you're about to over-write your tox. If you confirm that you want to replace your tox, it will save the updated version right where your previous tox was located. 
+The way you'll use this tox is just as if you were working as you might normally. Only, when you hit `ctrl + w`, if you're inside of a COMP that hasn't been saved externally, you'll be asked if you want to externalize that module. If you select `yes` you'll next be asked where you want to save that module. This module will then create a folder that has the same name as your component, and save the tox inside of that folder (the tox will also have the same name as the component). Better yet, this module will auto-populate the path to the external tox with the location you've selected. When you press `ctrl + w` again it will warn you that you're about to over-write your tox. If you confirm that you want to replace your tox, it will save the updated version right where your previous tox was located. 
 
 ### `ctrl+shift+w`
 In addition to saving a single file, you can also see all the components that you've changed by using this shortcut. This will open a menu of all `dirty` components that may need to be saved. You can then save them directly from this menu.
@@ -67,7 +67,7 @@ In addition to saving a single file, you can also see all the components that yo
 4. Create a new component, and navigate inside of this new COMP.  
 ![create-a-new-comp](assets/create-new-comp.PNG)
 
-5. Use `ctrl + s` to save your project as you might usually.
+5. Use `ctrl + w` to save your project as you might usually.
 6. Notice that you're now prompted to save your COMP externally - select `Yes`  
 ![ctrl-s](assets/prompt-to-externalize.PNG)
 
