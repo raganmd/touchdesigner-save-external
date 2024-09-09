@@ -1,0 +1,13 @@
+{
+    "folders": [
+        {
+            "name": "TouchDesigner",
+            "path": "../dev",
+            "cwd": "../dev",
+            "python.interpreterPath": "C:/Program Files/Derivative/TouchDesigner.2023.11880/bin/python.exe"
+        },
+    ],
+    "settings": {
+        "workbench.colorTheme": "Overflow Contrast (rainglow)",
+    },
+}
