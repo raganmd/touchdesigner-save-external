@@ -28,7 +28,7 @@ That makes these components excellent candidates for externalization, but it tak
 
 
 # Parameters
-![base save and pars](assets/base_save_and_pars.PNG)  
+![base save and pars](assets/base_save_and_pars.png)  
 
 ## Save Settings
 
@@ -83,7 +83,7 @@ Comments are a super helpful addition to TouchDesigner networks, but it can be h
 
 Colors associated with these parameters will then be used to set the color of the comment in your network.
 
-![base save and pars](assets/comment-colors.PNG)
+![base save and pars](assets/comment-colors.png)
 
 ## Short Cuts
 
@@ -95,7 +95,7 @@ In addition to saving a single file, you can also see all the components that yo
 
 ## All TOX Components - floating window
 
-![create-a-dir](assets/all-tox-comps-window.PNG)
+![create-a-dir](assets/all-tox-comps-window.png)
 
 It's not always easy to remember which `COMPs` have been externalized, or to get to them quickly. The `ctrl+shift+w` hot key opens a floating window that can help you manage your external TOX files. This floating window provides a quick view of a number of different attributes for your external files. Here you can see the name, version, and last saved date for your `TOX`. There are also four quick action buttons you might use.
 
