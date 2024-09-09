@@ -28,7 +28,7 @@ That makes these components excellent candidates for externalization, but it tak
 
 
 # Parameters
-![base save and pars](assets/base_save_and_pars.png)  
+![base save and pars](assets/base_save_and_pars_v2.PNG)  
 
 ## Save Settings
 
