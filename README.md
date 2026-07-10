@@ -1,6 +1,6 @@
 # TouchDesigner Save External
 *a simple save external tox and text helper*  
-[matthew ragan](matthewragan.com) | [SudoMagic](sudomagic.com)
+[matthew ragan](https://matthewragan.com/) | [SudoMagic](https://www.sudomagic.com)
 
 ## TouchDesigner Version
 * 099 2023.11880
